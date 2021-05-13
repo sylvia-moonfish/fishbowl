@@ -44,11 +44,11 @@ export async function getStaticProps(context) {
     `${process.env.HOSTNAME}/data/bis-guide/${version}/bis-jobs.json`
   )
     .then((response) => {
-      if (!response.ok) return { revalidate: 1, notFound: true };
+      if (!response.ok) return { notFound: true };
       return response.json();
     })
     .catch((error) => {
-      return { revalidate: 1, notFound: true };
+      return { notFound: true };
     });
   if (jobs.notFound) return jobs;
 
@@ -56,11 +56,11 @@ export async function getStaticProps(context) {
     `${process.env.HOSTNAME}/data/bis-guide/${version}/bis-page-data.json`
   )
     .then((response) => {
-      if (!response.ok) return { revalidate: 1, notFound: true };
+      if (!response.ok) return { notFound: true };
       return response.json();
     })
     .catch((error) => {
-      return { revalidate: 1, notFound: true };
+      return { notFound: true };
     });
   if (pageData.notFound) return pageData;
 
